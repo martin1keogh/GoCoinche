@@ -36,3 +36,16 @@ func TestShuffleDeck(t *testing.T) {
 		t.Errorf("Shuffling the same deck twice should not result in the exact same order.")
 	}
 }
+
+func TestCompleteDeckIsWorth152Points(t *testing.T) {
+	deck := SortedDeck()
+	newDeck := deck.Shuffle()
+
+	for _, suit := range [...]BidSuit{AllTrump, NoTrump, Heart, Club, Diamond, Spade} {
+		points := PointsAt(&newDeck, suit)
+
+		if points != 152 {
+			t.Errorf("Unexpected total number of points for a complete Deck at suit %s. Expected 152, got %d", suit, points)
+		}
+	}
+}
