@@ -54,6 +54,27 @@ func (c *Card) IsTrumpAt(bs BidSuit) bool {
 	return false
 }
 
+func (card *Card) PointsAt(bs BidSuit) int {
+	res := 0
+	switch bs {
+	case AllTrump:
+		res = whenAllTrumpsCardValue[card.name]
+
+	case NoTrump:
+		res = whenNoTrumpsCardValue[card.name]
+
+	default:
+		if card.IsTrumpAt(bs) {
+			res = whenIsTrumpCardValue[card.name]
+		} else {
+			res = whenIsNotTrumpCardValue[card.name]
+		}
+
+	}
+
+	return res
+}
+
 type cardToPoint map[CardName]int
 
 var whenIsTrumpCardValue = cardToPoint{
