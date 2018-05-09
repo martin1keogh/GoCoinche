@@ -5,12 +5,15 @@ import (
 	"testing"
 )
 
-func TestGetPlayerOrderNoArg(t *testing.T) {
-	r := GetPlayerOrder()
-	expected := [4]Direction{North, East, South, West}
+var expected [4]Direction = [4]Direction{North, East, South, West}
 
-	for i := 0; i < 12; i++ {
-		assert.Equal(t, expected[i%4], r.Value)
-		r = *r.Next()
+func TestGetPlayerOrder(t *testing.T) {
+	for shiftBy, direction := range expected {
+		r := GetPlayerOrder(direction)
+
+		for i := shiftBy; i < (12 + shiftBy); i++ {
+			assert.Equal(t, expected[i%4], r.Value)
+			r = *r.Next()
+		}
 	}
 }

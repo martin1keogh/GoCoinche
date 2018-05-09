@@ -28,7 +28,7 @@ func NewTable() Table {
 	deck := SortedDeck()
 	shuffled := deck.Shuffle()
 
-	dealer := GetPlayerOrder()
+	dealer := GetPlayerOrder(North)
 
 	table := Table{
 		NorthSouth: NS,
