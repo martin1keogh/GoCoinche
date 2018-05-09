@@ -1,5 +1,9 @@
 package models
 
+import (
+	"container/ring"
+)
+
 type Direction string
 
 const (
@@ -12,4 +16,13 @@ const (
 type Position struct {
 	direction Direction
 	hand      [8]Card
+}
+
+func GetPlayerOrder() ring.Ring {
+	r := &ring.Ring{Value: North}
+	r.Link(&ring.Ring{Value: West})
+	r.Link(&ring.Ring{Value: South})
+	r.Link(&ring.Ring{Value: East})
+
+	return *r
 }
