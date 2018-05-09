@@ -28,6 +28,6 @@ const (
 )
 
 type Bid struct {
-	Suit  BidSuit
-	Value BidValue
+	suit  BidSuit
+	value BidValue
 }
