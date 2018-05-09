@@ -1,10 +1,15 @@
 package models
 
-type Position string
+type Direction string
 
 const (
-	North Position = "North"
-	East  Position = "East"
-	South Position = "South"
-	West  Position = "West"
+	North Direction = "North"
+	East  Direction = "East"
+	South Direction = "South"
+	West  Direction = "West"
 )
+
+type Position struct {
+	direction Direction
+	hand      [8]Card
+}
