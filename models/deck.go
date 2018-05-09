@@ -29,3 +29,23 @@ func (d *Deck) Shuffle() Deck {
 
 	return newDeck
 }
+
+func (d *Deck) deal() [4][8]Card {
+	c := d.cards
+	newHands := [4][8]Card{}
+
+	for i := 0; i < 4; i++ {
+		hand := [8]Card{}
+		hand[0] = c[i*3]
+		hand[1] = c[i*3+1]
+		hand[2] = c[i*3+2]
+		hand[3] = c[i*3+12]
+		hand[4] = c[i*3+13]
+		hand[5] = c[i*3+20]
+		hand[6] = c[i*3+21]
+		hand[7] = c[i*3+22]
+		newHands[i] = hand
+	}
+
+	return newHands
+}

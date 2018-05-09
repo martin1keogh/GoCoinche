@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -48,4 +49,17 @@ func TestCompleteDeckIsWorth152Points(t *testing.T) {
 			t.Errorf("Unexpected total number of points for a complete Deck at suit %s. Expected 152, got %d", suit, points)
 		}
 	}
+}
+
+func TestDealDoesntLoseOrCreateCards(t *testing.T) {
+	deck := SortedDeck()
+	new := deck.deal()
+	cardCount := 0
+	for i := 0; i < 4; i++ {
+		for _, card := range new[i] {
+			assert.Equal(t, Contains(&deck, card), true)
+			cardCount += 1
+		}
+	}
+	assert.Equal(t, cardCount, 32)
 }
