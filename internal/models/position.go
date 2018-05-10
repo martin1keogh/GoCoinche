@@ -13,6 +13,10 @@ const (
 	West  Direction = "West"
 )
 
+func AllDirections() [4]Direction {
+	return [4]Direction{North, East, South, West}
+}
+
 type Position struct {
 	Direction Direction
 	Hand      [8]Card
