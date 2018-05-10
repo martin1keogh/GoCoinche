@@ -1,12 +1,14 @@
 package models
 
+import "fmt"
+
 type Suit string
 
 const (
-	Hearts   Suit = "Hearts"
-	Diamonds Suit = "Diamonds"
-	Clubs    Suit = "Clubs"
-	Spades   Suit = "Spades"
+	Hearts   Suit = "♥"
+	Diamonds Suit = "♦"
+	Clubs    Suit = "♣"
+	Spades   Suit = "♠"
 )
 
 func AllSuits() [4]Suit {
@@ -16,13 +18,13 @@ func AllSuits() [4]Suit {
 type CardName string
 
 const (
-	_7  CardName = "Seven"
-	_8  CardName = "Eight"
-	_9  CardName = "Nine"
-	_10 CardName = "Ten"
-	_J  CardName = "Jack"
-	_Q  CardName = "Queen"
-	_K  CardName = "King"
+	_7  CardName = "7"
+	_8  CardName = "8"
+	_9  CardName = "9"
+	_10 CardName = "10"
+	_J  CardName = "J"
+	_Q  CardName = "Q"
+	_K  CardName = "K"
 	_As CardName = "As"
 )
 
@@ -33,6 +35,10 @@ func AllCardNames() [8]CardName {
 type Card struct {
 	suit Suit
 	name CardName
+}
+
+func (card Card) String() string {
+	return fmt.Sprintf("%v%v", card.name, card.suit)
 }
 
 func (card *Card) IsTrumpAt(bs BidSuit) bool {
