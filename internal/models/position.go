@@ -14,8 +14,8 @@ const (
 )
 
 type Position struct {
-	direction Direction
-	hand      [8]Card
+	Direction Direction
+	Hand      [8]Card
 }
 
 func GetPlayerOrder(startingDirection Direction) ring.Ring {

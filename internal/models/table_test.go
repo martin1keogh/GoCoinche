@@ -8,12 +8,12 @@ import (
 func TestNewTableSetTeams(t *testing.T) {
 	table := NewTable()
 
-	assert.Equal(t, table.NorthSouth.position1.direction, North)
-	assert.Equal(t, table.NorthSouth.position2.direction, South)
+	assert.Equal(t, table.NorthSouth.position1.Direction, North)
+	assert.Equal(t, table.NorthSouth.position2.Direction, South)
 	assert.Equal(t, table.NorthSouth.score, Score(0))
 
-	assert.Equal(t, table.EastWest.position1.direction, East)
-	assert.Equal(t, table.EastWest.position2.direction, West)
+	assert.Equal(t, table.EastWest.position1.Direction, East)
+	assert.Equal(t, table.EastWest.position2.Direction, West)
 	assert.Equal(t, table.EastWest.score, Score(0))
 }
 
@@ -35,8 +35,8 @@ func TestDealDealsToAll(t *testing.T) {
 	table.dealer.Next().Do(func(d interface{}) {
 		direction := d.(Direction)
 		position := table.findPosition(direction)
-		assert.NotEmpty(t, position.hand)
-		assert.NotContains(t, position.direction, seen)
-		seen = append(seen, position.direction)
+		assert.NotEmpty(t, position.Hand)
+		assert.NotContains(t, position.Direction, seen)
+		seen = append(seen, position.Direction)
 	})
 }

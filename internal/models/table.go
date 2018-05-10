@@ -57,7 +57,7 @@ func (t *Table) Deal() {
 	t.dealer.Next().Do(func(d interface{}) {
 		direction := d.(Direction)
 		position := t.findPosition(direction)
-		position.hand = newHands[i]
+		position.Hand = newHands[i]
 		i += 1
 	})
 }
