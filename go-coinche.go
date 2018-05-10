@@ -11,9 +11,11 @@ import (
 
 var logger = log.New()
 
+type Dir2Nick = map[models.Direction]string
+
 func main() {
 	table := models.NewTable()
-	direction2Nick := make(map[models.Direction]string)
+	direction2Nick := make(Dir2Nick)
 
 	// TODO pass by parameters
 	cb, err := bot.NewBot("localhost:6667", "cb")
@@ -81,7 +83,7 @@ func command(matches func(bot.Message) bool, f func(bot.Message) (string, error)
 
 // TODO move this to its own package
 // TODO move each of the commands to their own file
-func addTriggers(b *bot.Bot, t *models.Table, d2n map[models.Direction]string) {
+func addTriggers(b *bot.Bot, t *models.Table, d2n Dir2Nick) {
 	triggers := []bot.Trigger{
 		// !join
 		command(
@@ -97,7 +99,7 @@ func addTriggers(b *bot.Bot, t *models.Table, d2n map[models.Direction]string) {
 	}
 }
 
-func registerPlayer(nick string, d2n map[models.Direction]string) (string, error) {
+func registerPlayer(nick string, d2n Dir2Nick) (string, error) {
 	if len(d2n) >= 4 {
 		return "", fmt.Errorf("Table is full")
 	}
