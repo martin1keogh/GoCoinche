@@ -35,16 +35,16 @@ type Card struct {
 	name CardName
 }
 
-func (c *Card) IsTrumpAt(bs BidSuit) bool {
+func (card *Card) IsTrumpAt(bs BidSuit) bool {
 	switch bs {
 	case Heart:
-		return c.suit == Hearts
+		return card.suit == Hearts
 	case Diamond:
-		return c.suit == Diamonds
+		return card.suit == Diamonds
 	case Club:
-		return c.suit == Clubs
+		return card.suit == Clubs
 	case Spade:
-		return c.suit == Spades
+		return card.suit == Spades
 	case AllTrump:
 		return true
 	case NoTrump:

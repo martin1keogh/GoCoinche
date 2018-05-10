@@ -58,7 +58,7 @@ func TestDealDoesntLoseOrCreateCards(t *testing.T) {
 	for i := 0; i < 4; i++ {
 		for _, card := range new[i] {
 			assert.Equal(t, Contains(&deck, card), true)
-			cardCount += 1
+			cardCount++
 		}
 	}
 	assert.Equal(t, cardCount, 32)

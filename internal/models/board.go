@@ -10,16 +10,16 @@ type Board struct {
 }
 
 func (board *Board) WinningBid() (*Bid, error) {
-	var nbBids int = len(board.bids)
+	nbBids := len(board.bids)
 	if nbBids == 0 {
 		return nil, errors.New("No winning bid when nobody bid yet.")
-	} else {
-		var winning Bid = board.bids[0]
-		for _, bid := range board.bids {
-			if bid.value > winning.value {
-				winning = bid
-			}
-		}
-		return &winning, nil
 	}
+
+	winning := board.bids[0]
+	for _, bid := range board.bids {
+		if bid.value > winning.value {
+			winning = bid
+		}
+	}
+	return &winning, nil
 }

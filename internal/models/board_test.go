@@ -1,8 +1,10 @@
 package models
 
 import (
-	"github.com/stretchr/testify/assert"
+	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestWinningBidErrorWhenEmpty(t *testing.T) {

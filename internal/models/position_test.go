@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-var expected [4]Direction = [4]Direction{North, East, South, West}
+var expected = [4]Direction{North, East, South, West}
 
 func TestGetPlayerOrder(t *testing.T) {
 	for shiftBy, direction := range expected {

@@ -14,12 +14,12 @@ type Table struct {
 }
 
 func NewTable() Table {
-	var NS Team = Team{
+	NS := Team{
 		position1: Position{North, [8]Card{}},
 		position2: Position{South, [8]Card{}},
 		score:     0,
 	}
-	var EW Team = Team{
+	EW := Team{
 		position1: Position{East, [8]Card{}},
 		position2: Position{West, [8]Card{}},
 		score:     0,
@@ -53,7 +53,7 @@ func (t *Table) Deal() {
 
 	t.ForeachPositionStartingFrom(firstReceiver, func(pos *Position) {
 		pos.Hand = newHands[i]
-		i += 1
+		i++
 	})
 }
 
